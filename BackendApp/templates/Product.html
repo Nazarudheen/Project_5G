@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Product</title>
+</head>
+<body>
+<form method="post" action="{% url 'SaveProduct' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="col-sm-12 col-xl-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Add Product</h6>
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="PCategory">
+                                    <option selected="">Select </option>
+                                    {% for i in cat %}
+                                    <option >{{i.Name}}</option>
+                                    {% endfor %}
+                                </select>
+                                <label for="floatingSelect">Category</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="PName">
+                                <label for="floatingInput">Name</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="floatingPassword" placeholder="Password" name="PPrice">
+                                <label for="floatingPassword">Price</label>
+                            </div>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Add Image 1</label>
+                                <input class="form-control bg-dark" type="file" name="PImage1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Add Image 2</label>
+                                <input class="form-control bg-dark" type="file" name="PImage2">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Add Image 3</label>
+                                <input class="form-control bg-dark" type="file" name="PImage3">
+                            </div>
+
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 150px;" name="PDiscription"></textarea>
+                                <label for="floatingTextarea">Discription</label>
+                            </div><br>
+                            <div >
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+</form>
+
+</body>
+</html>
+{% endblock %}
